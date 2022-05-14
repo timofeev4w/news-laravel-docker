@@ -5,26 +5,50 @@
                 Новости
             </h1>
         </div>
+
+        <spin v-if="loading"></spin>
         
-        <div class="row">
-            <div class="col-12 mb-3">
-                <div class="card">
-                    <h5 class="card-header">Featured</h5>
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                    <div class="card-footer text-muted">
-                        2 days ago
-                    </div>
-                </div>
-            </div>
+        <div class="row" v-else>
+            <!-- <post v-for="post in posts" :title="post.title" :body="post.body" :date="post.created_at"></post> -->
+            <post 
+                v-for="post in posts" 
+                :key="post.id" 
+                :title="post.title" 
+                :body="post.body" 
+                :date="post.created_at">
+            </post>
         </div>
     </div>
 </template>
 
 <script>
+    import Spin from "../components/Spin.vue";
+    import axios from "axios";
+    import Post from "../components/news/Post.vue";
+
     export default {
-        name: "Index"
+        components: {
+            Spin,
+            Post
+        },
+
+        data: () => ({
+            loading: true,
+            posts: []
+        }),
+
+        mounted() {
+            this.loadPosts();
+        },
+
+        methods: {
+            loadPosts() {
+                axios.get('/api/news')
+                    .then(res => {
+                        this.posts = res.data;
+                        this.loading = false;
+                    })
+            }
+        }
     }
 </script>

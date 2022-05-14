@@ -45,7 +45,7 @@
                     {
                         title: "Главная",
                         // href: "/news"
-                        href: "/posts"
+                        href: "/news"
                     },
                     {
                         title: "Категории",

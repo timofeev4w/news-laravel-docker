@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('index');
 // });
 
+Route::redirect('/', 'news');
+
 Route::any('/{any}', function () {
     return view('index');
 })->where('any', '.*');

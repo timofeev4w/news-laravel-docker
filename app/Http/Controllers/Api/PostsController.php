@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class PostsController extends Controller
 {
@@ -16,9 +17,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        // return Post::all();
+        return Post::all();
         // DB::table('posts')->get();
-        return 'aaaa';
+        // return 'aaaa';
     }
 
     /**
@@ -39,7 +40,39 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $validated = $request->validate([
+        //     'title' => 'required',
+        //     'body' => 'required'
+        // ]);
+
+        // return $validated;
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'title' => 'required',
+                'body' => 'required'
+            ]
+            );
+
+        if ($validator->fails()) {
+            // return $validator->messages();
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors()
+            ])->setStatusCode(400);
+            // $validator->errors();
+        }
+
+        $post = Post::create([
+            'title' => $request->input('title'),
+            'body' => $request->input('body')
+        ]);
+
+        return response()->json([
+            'status' => true,
+            'post' => $post
+        ])->setStatusCode(201);
     }
 
     /**
@@ -50,7 +83,19 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        if (!$post) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Новость не найдена'
+            ])->setStatusCode(404);
+        }
+
+        return response()->json([
+            'status' => true,
+            'message' => $post
+        ])->setStatusCode(200);
     }
 
     /**

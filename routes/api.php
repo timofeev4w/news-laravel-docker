@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PostsController;
+use App\Http\Controllers\Api\PostsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::resource('news', PostsController::class);
-Route::resource('posts', PostsController::class);
+Route::resource('news', PostsController::class);
 

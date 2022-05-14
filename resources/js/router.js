@@ -5,17 +5,22 @@ Vue.use(vueRouter);
 
 import Index from "./views/Index";
 import Category from "./views/Category";
+import Post from "./views/Post";
 
 
 const routes = [
     {
         // path: "/news",
-        path: "/posts",
+        path: "/news",
         component: Index
     },
     {
         path: "/category",
         component: Category
+    },
+    {
+        path: "/news/:id",
+        component: Post
     }
 ];
 
