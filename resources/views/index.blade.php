@@ -16,7 +16,9 @@
 <body>
     <div id="app">
         <v-header></v-header>
-        <router-view></router-view>
+        <div class="container">
+            <router-view></router-view>
+        </div>
     </div>
 
     {{-- <script src="./js/app.js"></script> --}}

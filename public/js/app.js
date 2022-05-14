@@ -5412,7 +5412,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       links: [{
         title: "Главная",
-        href: "/"
+        // href: "/news"
+        href: "/posts"
       }, {
         title: "Категории",
         href: "/category"
@@ -5459,6 +5460,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5573,7 +5591,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 
 
 var routes = [{
-  path: "/",
+  // path: "/news",
+  path: "/posts",
   component: _views_Index__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: "/category",
@@ -28477,7 +28496,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("\n        HOME\n    ")])])
+    return _c("div", { staticClass: "row " }, [
+      _c("div", { staticClass: "d-flex justify-content-center mb-3" }, [
+        _c("h1", [_vm._v("\n            Новости\n        ")]),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12 mb-3" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("h5", { staticClass: "card-header" }, [_vm._v("Featured")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v("Special title treatment"),
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(
+                  "With supporting text below as a natural lead-in to additional content."
+                ),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-footer text-muted" }, [
+              _vm._v("\n                    2 days ago\n                "),
+            ]),
+          ]),
+        ]),
+      ]),
+    ])
   },
 ]
 render._withStripped = true

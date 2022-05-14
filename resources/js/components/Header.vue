@@ -44,7 +44,8 @@
                 links: [
                     {
                         title: "Главная",
-                        href: "/"
+                        // href: "/news"
+                        href: "/posts"
                     },
                     {
                         title: "Категории",

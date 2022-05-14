@@ -9,7 +9,8 @@ import Category from "./views/Category";
 
 const routes = [
     {
-        path: "/",
+        // path: "/news",
+        path: "/posts",
         component: Index
     },
     {
